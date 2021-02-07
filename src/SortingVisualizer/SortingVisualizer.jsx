@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './SortingVisualizer.css';
+import { bubbleSort } from './../SortingAlgos/SortingAlgos';
 
 
 export default function SortingVisualizer() {
@@ -18,7 +19,22 @@ export default function SortingVisualizer() {
         }
 
         setArray(array);
+    }
 
+    const handleSortClick = (e) => {
+        switch (e.target.id) {
+            case 'merge-sort':
+                console.log('1');
+                break;
+            case 'quick-sort':
+                console.log('2');
+                break;
+            case 'heap-sort':
+                console.log('3');
+                break;
+            case 'bubble-sort':
+                console.log(bubbleSort(array));
+        }
     }
     
     return (
@@ -32,10 +48,10 @@ export default function SortingVisualizer() {
             </div>
             <div className='button-container'>
                 <button onClick={() => resetArray()} className='reset-button'>Reset</button>
-                <button onClick={() => resetArray()}>Merge Sort</button>
-                <button onClick={() => resetArray()}>Quick Sort</button>
-                <button onClick={() => resetArray()}>Heap Sort</button>
-                <button onClick={() => resetArray()}>Bubble Sort</button>
+                <button onClick={handleSortClick} id='merge-sort'>Merge Sort</button>
+                <button onClick={handleSortClick} id='quick-sort'>Quick Sort</button>
+                <button onClick={handleSortClick} id='heap-sort'>Heap Sort</button>
+                <button onClick={handleSortClick} id='bubble-sort'>Bubble Sort</button>
             </div>
         </div>
     );
