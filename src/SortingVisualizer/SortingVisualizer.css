@@ -1,3 +1,8 @@
+.sv-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .array-container {
     position: absolute;
     top: 50%;
@@ -12,4 +17,33 @@
     background-color: rgb(61, 190, 130);
     display: inline-block;
     margin: 0 1px;
+}
+
+.button-container {
+    text-align: center;
+}
+
+button {
+    width: 10%;
+    height: 40px;
+    margin: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(105, 105, 105);
+    color: white;
+    transition: linear all .2s;
+    white-space: nowrap;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: rgb(75, 75, 75);
+}
+
+.reset-button {
+    background-color: rgb(236, 79, 79);
+}
+
+.reset-button:hover {
+    background-color: rgb(192, 64, 64);
 }

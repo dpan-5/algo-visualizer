@@ -22,12 +22,21 @@ export default function SortingVisualizer() {
     }
     
     return (
-        <div className='array-container'>
-            {array.map((val, idx) => (
-                <div className='array-bar' key={idx} style={{height: `${val}px`}}>
-                    
-                </div>
-            ))}
+        <div className='sv-container'>
+            <div className='array-container'>
+                {array.map((val, idx) => (
+                    <div className='array-bar' key={idx} style={{height: `${val}px`}}>
+                        
+                    </div>
+                ))}
+            </div>
+            <div className='button-container'>
+                <button onClick={() => resetArray()} className='reset-button'>Reset</button>
+                <button onClick={() => resetArray()}>Merge Sort</button>
+                <button onClick={() => resetArray()}>Quick Sort</button>
+                <button onClick={() => resetArray()}>Heap Sort</button>
+                <button onClick={() => resetArray()}>Bubble Sort</button>
+            </div>
         </div>
     );
 }
