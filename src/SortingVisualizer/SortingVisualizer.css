@@ -1,6 +1,7 @@
 .sv-container {
     display: flex;
     flex-direction: column;
+    /* position: relative; */
 }
 
 .array-container {
@@ -10,14 +11,27 @@
     margin-right: -50%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
+    height: 50%;
+    width: 50%;
 }
 
 .array-bar {
-    width: 2px;
-    background-color: rgb(61, 190, 130);
-    display: inline-block;
-    margin: 0 1px;
+    width: 28px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #58b7ff;
+    transition: 0.2s all ease;
 }
+
+.array-bar-label {
+    position: absolute;
+    top: -22px;
+    width: 100%;
+    text-align: center;
+}
+
+
 
 .button-container {
     text-align: center;
