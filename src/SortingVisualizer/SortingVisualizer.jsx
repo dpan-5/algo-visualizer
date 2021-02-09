@@ -7,15 +7,26 @@ export default function SortingVisualizer() {
     
     const [array, setArray] = useState([]);
     const [algoIsRunning, setAlgoIsRunning] = useState(false);
-    const [showMore, setShowMore] = useState(false);
+    const [algoHasRan, setAlgoHasRan] = useState(false);
 
     useEffect(() => {
         resetArray();
     }, []);
 
+    useEffect(() => {
+        if (algoIsRunning) {
+            setAlgoHasRan(true);
+        }
+    }, [algoIsRunning])
+
     const resetArray = () => {
         if (algoIsRunning) {
             window.location.href='/';
+        }
+
+        if (algoHasRan) {
+            let bars = document.querySelectorAll('.array-bar');
+            bars.forEach(bar => bar.style.backgroundColor = '#58B7FF');
         }
 
         const array = [];
@@ -106,6 +117,10 @@ export default function SortingVisualizer() {
         setAlgoIsRunning(true);
         let bars = document.querySelectorAll('.array-bar');
 
+        if (algoHasRan) {
+            bars.forEach(bar => bar.style.backgroundColor = '#58B7FF')
+        }
+
         for (let i = 0; i < bars.length; i++) {
             // document.querySelector('.iLoop').style.color = 'red';
             // document.querySelector('.jLoop').style.color = 'black';
@@ -141,16 +156,21 @@ export default function SortingVisualizer() {
 
             bars[bars.length - i - 1].style.backgroundColor = "#13CE66";
         }
+
+        setAlgoIsRunning(false);
     }
 
     //===================================================================================
     // SELECTION SORT
     //===================================================================================
 
-    const selectionSort = async (delay = 1000) => {
+    const selectionSort = async (delay = 100) => {
         setAlgoIsRunning(true);
         let bars = document.querySelectorAll('.array-bar');
 
+        if (algoHasRan) {
+            bars.forEach(bar => bar.style.backgroundColor = '#58B7FF')
+        }
 
         for (let i = 0; i < bars.length; i++) {
             console.log(bars);
@@ -163,7 +183,7 @@ export default function SortingVisualizer() {
             }, delay));
 
             for (let j = i + 1; j < bars.length; j++) {
-                bars[j].style.backgroundColor = "yellow";
+                bars[j].style.backgroundColor = "#FF4949";
 
                 await new Promise(resolve => setTimeout(() => {
                     resolve();
@@ -171,14 +191,17 @@ export default function SortingVisualizer() {
 
 
                 if (Number(bars[j].childNodes[0].innerHTML) < Number(bars[min].childNodes[0].innerHTML)) {
-                    if (min !== i) {
+                        if (min !== i) {
                         // Turn old index of min back to blue
                         bars[min].style.backgroundColor= "#58B7FF";
-                    }
+                        }
                     // Set new min object to current min of index j
                     min = j;
                     // Turn current index (new min) to purple
                     bars[j].style.backgroundColor = '#AE58FF';
+                    await new Promise(resolve => setTimeout(() => {
+                        resolve();
+                    }, delay));
                 } else {
                     bars[j].style.backgroundColor = "#58B7FF";
                 }
@@ -188,6 +211,7 @@ export default function SortingVisualizer() {
                 await swap2(bars[i], bars[min]);
                 bars = document.querySelectorAll(".array-bar");
                 bars[i].style.backgroundColor = "#58B7FF";
+                bars[min].style.backgroundColor = "#58B7FF";
             }
 
 
@@ -197,6 +221,7 @@ export default function SortingVisualizer() {
 
         }
 
+        setAlgoIsRunning(false);
     }
 
 
