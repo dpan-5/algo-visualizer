@@ -5,14 +5,19 @@
 }
 
 .array-container {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+    /* height: 50%;
+    width: 50%; */
+
+    position: relative;
+    height: 400px;
+    width: 690px;
+    margin: 0 auto;
     white-space: nowrap;
-    height: 50%;
-    width: 50%;
 }
 
 .array-bar {
@@ -35,6 +40,7 @@
 
 .button-container {
     text-align: center;
+    /* white-space: nowrap; */
 }
 
 button {
