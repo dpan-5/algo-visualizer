@@ -67,3 +67,7 @@ button:hover {
 .reset-button:hover {
     background-color: rgb(192, 64, 64);
 }
+
+#slider {
+    width: 200px;
+}
